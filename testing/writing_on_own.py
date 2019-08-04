@@ -22,6 +22,14 @@ class DisplayWeatherPage(GridLayout):
 
 		self.send_url = "&appid=" + self.api_key
 
+	def fetch_weather(self, city):
+		response = requests.get(url.format(city) + send_url)
+		response_json = response.json()
+		temp = int((response_json['main']['temp'] - 273.15))
+		condition = response_json['weather'][0]['main']
+		speak_text = 'Weather Report for {0} is {1} with {2}degree celcius'.format(
+			city, condition, temp)
+
 
 class TestApp(App):
 	def build(self):
