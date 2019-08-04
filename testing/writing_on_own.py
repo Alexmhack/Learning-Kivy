@@ -34,12 +34,21 @@ class DisplayWeatherPage(GridLayout):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 		self.api_key = 'eb1ed9135fc15fd78e986d8824d4fd69'
-		self.url = "http://api.openweathermap.org/data/2.5/weather?q={},India"
+		self.url = "http://api.openweathermap.org/data/2.5/weather?q={},{}"
 
 		self.send_url = "&appid=" + self.api_key
 
-	def fetch_weather(self, city):
-		response = requests.get(self.urlurl.format(city) + self.send_url)
+		self.cols = 1
+
+		self.message = Label(halign="center", valign="middle", font_size=30)
+		self.message.bind(width=self.update_message_width)
+		self.add_widget(self.message)
+
+	def update_message_width(self, *_):
+		self.message.text_size = (self.message.width * 0.9, None)
+
+	def fetch_weather(self, city, country):
+		response = requests.get(self.urlurl.format(city, country) + self.send_url)
 		response_json = response.json()
 		try:
 			temp = int((response_json['main']['temp'] - 273.15))
