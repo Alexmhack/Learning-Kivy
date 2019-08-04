@@ -60,6 +60,7 @@ class InfoPage(GridLayout):
 		super().__init__(**kwargs)
 
 		self.cols = 1
+		self.message = Label(halign="center", valign="middle", font_size=30)
 
 
 class EpicApp(App):
