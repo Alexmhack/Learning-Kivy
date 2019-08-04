@@ -26,6 +26,7 @@ class ConnectPage(GridLayout):
 		self.add_widget(self.port)
 
 		self.join = Button(text="Join")
+		self.add_widget(Label())
 		self.add_widget(self.join)
 
 
