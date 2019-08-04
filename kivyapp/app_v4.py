@@ -61,11 +61,16 @@ class InfoPage(GridLayout):
 
 		self.cols = 1
 		self.message = Label(halign="center", valign="middle", font_size=30)
+
+		# bind this message / Label width to a method
 		self.message.bind(width=self.update_text_width)
 
+	# method to change the message by passing in a message
 	def update_info(self, message):
 		self.message.text = message
 
+	# change the text size of message Label to 90% of the current width
+	# which basically makes it a little smaller than the current width
 	def update_text_width(self, *_):
 		self.message.text_size = (self.message.width * 0.9, None)
 
