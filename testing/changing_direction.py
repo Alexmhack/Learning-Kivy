@@ -2,7 +2,7 @@ import kivy
 
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import ScreenManager, Screen  # , FadeTransition
 
 Builder.load_string("""
 <MenuScreen>:
@@ -36,7 +36,9 @@ class SettingsScreen(Screen):
 	pass
 
 
-screen_manager = ScreenManager(transition=FadeTransition())
+screen_manager = ScreenManager()
+# https://kivy.org/doc/stable/api-kivy.uix.screenmanager.html#kivy.uix.screenmanager.FadeTransition
+# screen_manager = ScreenManager(transition=FadeTransition())
 screen_manager.add_widget(MenuScreen(name='menu'))
 screen_manager.add_widget(SettingsScreen(name='settings'))
 
