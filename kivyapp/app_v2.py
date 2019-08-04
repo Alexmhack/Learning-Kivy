@@ -42,6 +42,9 @@ class ConnectPage(GridLayout):
 
 		print(f"Attempting to join {ip}:{port} as {username}")
 
+		with open('prev_details.txt', 'w') as file:
+			file.write(f"{ip},{port},{username}")
+
 
 class EpicApp(App):
 	def build(self):
