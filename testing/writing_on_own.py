@@ -5,6 +5,7 @@ from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.screenmanager import ScreenManager, Screen
 
 
 class DataInputPage(GridLayout):
@@ -48,7 +49,19 @@ class DisplayWeatherPage(GridLayout):
 
 class TestApp(App):
 	def build(self):
-		return Label(text="Hey")
+		screen_manager = ScreenManager()
+
+		self.data_input_page = DataInputPage()
+		screen = Screen(name="DataInput")
+		screen.add_widget(self.data_input_page)
+		screen_manager.add_widget(screen)
+
+		self.display_weather_page = DisplayWeatherPage()
+		screen = Screen(name="DisplayWeather")
+		screen.add_widget(self.display_weather_page)
+		screen_manager.add_widget(screen)
+
+		return screen_manager
 
 
 if __name__ == '__main__':
