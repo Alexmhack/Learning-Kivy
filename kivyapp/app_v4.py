@@ -99,4 +99,5 @@ class EpicApp(App):
 
 
 if __name__ == '__main__':
-	EpicApp().run()
+	chat_app = EpicApp()
+	chat_app.run()
