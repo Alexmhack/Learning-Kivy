@@ -55,6 +55,13 @@ class ConnectPage(GridLayout):
 			file.write(f"{ip},{port},{username}")
 
 
+class InfoPage(GridLayout):
+	def __init__(self, **kwargs):
+		super().__init__(**kwargs)
+
+		self.cols = 1
+
+
 class EpicApp(App):
 	def build(self):
 		self.screen_manager = ScreenManager()
