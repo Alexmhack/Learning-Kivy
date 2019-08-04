@@ -27,3 +27,26 @@ Builder.load_string("""
 				root.manager.transition.direction = 'right'
 				root.manager.current = 'menu'
 """)
+
+
+# declare both screens
+class MenuScreen(Screen):
+	pass
+
+
+class SettingsScreen(Screen):
+	pass
+
+
+screen_manager = ScreenManager()
+screen_manager.add_widget(MenuScreen(name='Menu'))
+screen_manager.add_widget(SettingsScreen(name='Settings'))
+
+
+class TestApp(App):
+	def build(self):
+		return screen_manager
+
+
+if __name__ == '__main__':
+	TestApp().run()
