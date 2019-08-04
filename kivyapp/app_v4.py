@@ -64,6 +64,13 @@ class EpicApp(App):
 		screen.add_widget(self.connect_page)
 		self.screen_manager.add_widget(screen)
 
+		self.info_page = InfoPage()
+		screen = Screen(name="Info")
+		screen.add_widget(self.info_page)
+		self.screen_manager.add_widget(screen)
+
+		return self.screen_manager
+
 
 if __name__ == '__main__':
 	EpicApp().run()
