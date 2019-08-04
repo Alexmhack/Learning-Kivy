@@ -4,6 +4,7 @@ from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.button import Button
 
 
 class ConnectPage(GridLayout):
@@ -23,6 +24,9 @@ class ConnectPage(GridLayout):
 		self.add_widget(Label(text="Port:"))
 		self.port = TextInput(multiline=False)
 		self.add_widget(self.port)
+
+		self.join = Button(text="Join")
+		self.add_widget(self.join)
 
 
 class EpicApp(App):
