@@ -113,8 +113,13 @@ class EpicApp(App):
 
 		return self.screen_manager
 
+	def create_chat_page(self):
+		self.chat_page = ChatPage()
+		screen = Screen(name="Chat")
+		screen.add_widget(self.chat_page)
+		self.screen_manager.add_widget(screen)
+
 
 if __name__ == '__main__':
 	chat_app = EpicApp()
 	chat_app.run()
-
