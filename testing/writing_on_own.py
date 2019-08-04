@@ -28,6 +28,7 @@ class DataInputPage(GridLayout):
 		country = self.country.text
 
 		test_app.display_weather_page.fetch_weather(city, country)
+		test_app.screen_manager.current = "DisplayWeather"
 
 
 class DisplayWeatherPage(GridLayout):
