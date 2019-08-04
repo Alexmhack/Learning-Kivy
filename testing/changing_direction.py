@@ -36,7 +36,7 @@ class SettingsScreen(Screen):
 	pass
 
 
-screen_manager = ScreenManager()
+screen_manager = ScreenManager(transition=FadeTransition())
 screen_manager.add_widget(MenuScreen(name='menu'))
 screen_manager.add_widget(SettingsScreen(name='settings'))
 
