@@ -5,14 +5,15 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.gridlayout import GridLayout
 
-class ConnectPage(GridLayout):
 
+class ConnectPage(GridLayout):
+    pass
 
 
 class EpicApp(App):
-	def build(self):
-		return ConnectPage()
+    def build(self):
+        return ConnectPage()
 
 
 if __name__ == '__main__':
-	EpicApp().run()
+    EpicApp().run()
