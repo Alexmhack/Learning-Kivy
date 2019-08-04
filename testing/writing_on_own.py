@@ -13,6 +13,15 @@ class DataInputPage(GridLayout):
 
 		self.cols = 1
 
+		self.city = TextInput(text="Enter your city")
+		self.add_widget(self.city)
+
+		self.country = TextInput(text="Enter your country")
+		self.add_widget(self.country)
+
+		self.fetch = Button(text="Show Weather")
+		self.fetch.bind(on_press=self.fetch_button)
+
 
 class DisplayWeatherPage(GridLayout):
 	def __init__(self, **kwargs):
