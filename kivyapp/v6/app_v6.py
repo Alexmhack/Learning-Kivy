@@ -1,5 +1,6 @@
 import kivy
 import os
+import sys
 
 import socket_client
 
@@ -130,6 +131,7 @@ class EpicApp(App):
 def show_error(message):
 	chat_app.info_page.update_info(message)
 	chat_app.screen_manager.current = "Info"
+	Clock.schedule_once(sys.exit, 10)
 
 
 if __name__ == '__main__':
