@@ -36,7 +36,11 @@ class ConnectPage(GridLayout):
 		self.add_widget(self.join)
 
 	def join_button(self, instance):
-		pass
+		port = self.port.text
+		ip = self.ip.text
+		username = self.username.text
+
+		print(f"Attempting to join {ip}:{port} as {username}")
 
 
 class EpicApp(App):
