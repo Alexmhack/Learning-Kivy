@@ -23,12 +23,18 @@ class DisplayWeatherPage(GridLayout):
 		self.send_url = "&appid=" + self.api_key
 
 	def fetch_weather(self, city):
-		response = requests.get(url.format(city) + send_url)
+		response = requests.get(self.urlurl.format(city) + self.send_url)
 		response_json = response.json()
-		temp = int((response_json['main']['temp'] - 273.15))
-		condition = response_json['weather'][0]['main']
-		speak_text = 'Weather Report for {0} is {1} with {2}degree celcius'.format(
-			city, condition, temp)
+		try:
+			temp = int((response_json['main']['temp'] - 273.15))
+			condition = response_json['weather'][0]['main']
+			message = "Weather Report for {0} is {1} with {2}degree celcius".format(
+				city, condition, temp)
+		except Exception as e:
+			print(e)
+			message = "Error getting weather details, try again later."
+
+		self.message.text = message
 
 
 class TestApp(App):
