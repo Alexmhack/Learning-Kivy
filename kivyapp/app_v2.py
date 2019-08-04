@@ -30,6 +30,8 @@ class ConnectPage(GridLayout):
 		self.add_widget(self.port)
 
 		self.join = Button(text="Join")
+		# bind this button for an event to a method
+		self.join.bind(on_press=self.join_button)
 		self.add_widget(Label())
 		self.add_widget(self.join)
 
