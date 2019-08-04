@@ -1,6 +1,8 @@
 import kivy
 import os
 
+import socket_client
+
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
@@ -53,12 +55,22 @@ class ConnectPage(GridLayout):
 		with open("prev_details.txt", "w") as file:
 			file.write(f"{ip},{port},{username}")
 
-		# add text to message using method
 		info = f"Attempting to join {ip}:{port} as {username}"
 		chat_app.info_page.update_info(info)
 
-		# change the current screen to Info
 		chat_app.screen_manager.current = "Info"
+		Clock.schedule_once(self.connect, 1)
+
+	def connect(self, _):
+		port = int(self.port.text)
+		ip = self.ip.text
+		username = self.username.text
+
+		if not socket_client.connect(ip, port, username, show_error):
+			return pass
+
+		chat_app.create_chat_page()
+		chat_app.screen_manager.current = "Chat"
 
 
 class InfoPage(GridLayout):
