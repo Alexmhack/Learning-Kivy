@@ -1,4 +1,5 @@
 import kivy
+import os
 
 from kivy.app import App
 from kivy.uix.label import Label
@@ -11,22 +12,34 @@ class ConnectPage(GridLayout):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 
+		if os.path.isfile("prev_details.txt"):
+			with open("prev_details.txt", "r") as f:
+				file = f.read().split(",")
+
+			prev_ip = file[0]
+			prev_port = file[1]
+			prev_username = file[2]
+		else:
+			prev_ip = ""
+			prev_port = ""
+			prev_username = ""
+
 		# dividing the window in two cols
 		self.cols = 2
 
 		# widget defined first stacks in the first col
 		self.add_widget(Label(text="IP:"))
-		self.ip = TextInput(multiline=False)
+		self.ip = TextInput(text=prev_ip, multiline=False)
 		# this widget goes into second col
 		self.add_widget(self.ip)
 
 		# third widget takes up a seperate row and so on
 		self.add_widget(Label(text="Port:"))
-		self.port = TextInput(multiline=False)
+		self.port = TextInput(text=prev_port, multiline=False)
 		self.add_widget(self.port)
 
 		self.add_widget(Label(text="Username:"))
-		self.username = TextInput(multiline=False)
+		self.username = TextInput(text=prev_username, multiline=False)
 		self.add_widget(self.username)
 
 		self.join = Button(text="Join")
