@@ -1,4 +1,5 @@
 import kivy
+import os
 import requests
 
 from kivy.app import App
@@ -36,7 +37,7 @@ class DataInputPage(GridLayout):
 class DisplayWeatherPage(GridLayout):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
-		self.api_key = 'eb1ed9135fc15fd78e986d8824d4fd69'
+		self.api_key = os.getenv('API_KEY')
 		self.url = "http://api.openweathermap.org/data/2.5/weather?q={},{}"
 
 		self.send_url = "&appid=" + self.api_key
