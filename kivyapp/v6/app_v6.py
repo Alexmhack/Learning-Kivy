@@ -127,6 +127,11 @@ class EpicApp(App):
 		self.screen_manager.add_widget(screen)
 
 
+def show_error(message):
+	chat_app.info_page.update_info(message)
+	chat_app.screen_manager.current = "Info"
+
+
 if __name__ == '__main__':
 	chat_app = EpicApp()
 	chat_app.run()
