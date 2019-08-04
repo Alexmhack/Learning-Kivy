@@ -58,12 +58,12 @@ class DisplayWeatherPage(GridLayout):
 		self.message.text_size = (self.message.width * 0.9, None)
 
 	def fetch_weather(self, city, country):
-		response = requests.get(self.urlurl.format(city, country) + self.send_url)
+		response = requests.get(self.url.format(city, country) + self.send_url)
 		response_json = response.json()
 		try:
 			temp = int((response_json['main']['temp'] - 273.15))
 			condition = response_json['weather'][0]['main']
-			message = "Weather Report for {0} is {1} with {2}degree celcius".format(
+			message = "Weather Report for {0} is {1} with {2} degree celcius".format(
 				city, condition, temp)
 		except Exception as e:
 			print(e)
