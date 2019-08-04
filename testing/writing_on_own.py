@@ -23,6 +23,12 @@ class DataInputPage(GridLayout):
 		self.fetch = Button(text="Show Weather")
 		self.fetch.bind(on_press=self.fetch_button)
 
+	def fetch_button(self, instance):
+		city = self.city.text
+		country = self.country.text
+
+		test_app.display_weather_page.fetch_weather(city, country)
+
 
 class DisplayWeatherPage(GridLayout):
 	def __init__(self, **kwargs):
