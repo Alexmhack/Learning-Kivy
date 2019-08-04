@@ -47,6 +47,13 @@ class DisplayWeatherPage(GridLayout):
 		self.message.bind(width=self.update_message_width)
 		self.add_widget(self.message)
 
+		self.back = Button(text="Go Back")
+		self.back.bind(on_press=self.back_button)
+		self.add_widget(self.back)
+
+	def back_button(self, instance):
+		test_app.screen_manager.current = "DataInput"
+
 	def update_message_width(self, *_):
 		self.message.text_size = (self.message.width * 0.9, None)
 
