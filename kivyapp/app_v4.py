@@ -77,6 +77,12 @@ class EpicApp(App):
 		screen.add_widget(self.info_page)
 		self.screen_manager.add_widget(screen)
 
+		# create instance of ScreenManager
+		# create instance of ConnectPage / GridLayout
+		# create a Screen with a name to refer later
+		# add grid layout instance to screen
+		# finally add screen instance to screen manager and return screen manager
+
 		return self.screen_manager
 
 
