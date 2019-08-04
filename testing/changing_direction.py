@@ -39,8 +39,8 @@ class SettingsScreen(Screen):
 
 
 screen_manager = ScreenManager()
-screen_manager.add_widget(MenuScreen(name='Menu'))
-screen_manager.add_widget(SettingsScreen(name='Settings'))
+screen_manager.add_widget(MenuScreen(name='menu'))
+screen_manager.add_widget(SettingsScreen(name='settings'))
 
 
 class TestApp(App):
