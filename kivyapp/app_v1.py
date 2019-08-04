@@ -7,7 +7,13 @@ from kivy.uix.gridlayout import GridLayout
 
 
 class ConnectPage(GridLayout):
-    pass
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        self.cols = 2
+        self.add_widget(Label(text="IP:"))
+        self.ip = TextInput(multiline=False)
+        self.add_widget(self.ip)
 
 
 class EpicApp(App):
