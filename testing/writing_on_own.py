@@ -6,6 +6,7 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.button import Button
 
 
 class DataInputPage(GridLayout):
@@ -22,6 +23,7 @@ class DataInputPage(GridLayout):
 
 		self.fetch = Button(text="Show Weather")
 		self.fetch.bind(on_press=self.fetch_button)
+		self.add_widget(self.fetch)
 
 	def fetch_button(self, instance):
 		city = self.city.text
