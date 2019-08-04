@@ -49,13 +49,10 @@ class ConnectPage(GridLayout):
 		port = self.port.text
 		username = self.username.text
 
+		print(f"Attempting to join {ip}:{port} as {username}")
+
 		with open("prev_details.txt", "w") as file:
 			file.write(f"{ip},{port},{username}")
-
-		info = f"Attempting to join {ip}:{port} as {username}"
-		chat_app.info_page.update_info(info)
-
-		chat_app.screen_manager.current = "Info"
 
 
 class InfoPage(GridLayout):
@@ -68,15 +65,6 @@ class InfoPage(GridLayout):
 		# bind this message / Label width to a method
 		self.message.bind(width=self.update_text_width)
 		self.add_widget(self.message)
-
-	# method to change the message by passing in a message
-	def update_info(self, message):
-		self.message.text = message
-
-	# change the text size of message Label to 90% of the current width
-	# which basically makes it a little smaller than the current width
-	def update_text_width(self, *_):
-		self.message.text_size = (self.message.width * 0.9, None)
 
 
 class EpicApp(App):
