@@ -11,12 +11,16 @@ class ConnectPage(GridLayout):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 
+		# dividing the window in two cols
 		self.cols = 2
 
+		# widget defined first stacks in the first col
 		self.add_widget(Label(text="IP:"))
 		self.ip = TextInput(multiline=False)
+		# this widget goes into second col
 		self.add_widget(self.ip)
 
+		# third widget takes up a seperate row and so on
 		self.add_widget(Label(text="Username:"))
 		self.username = TextInput(multiline=False)
 		self.add_widget(self.username)
