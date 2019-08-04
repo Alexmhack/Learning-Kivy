@@ -21,13 +21,13 @@ class ConnectPage(GridLayout):
 		self.add_widget(self.ip)
 
 		# third widget takes up a seperate row and so on
-		self.add_widget(Label(text="Username:"))
-		self.username = TextInput(multiline=False)
-		self.add_widget(self.username)
-
 		self.add_widget(Label(text="Port:"))
 		self.port = TextInput(multiline=False)
 		self.add_widget(self.port)
+
+		self.add_widget(Label(text="Username:"))
+		self.username = TextInput(multiline=False)
+		self.add_widget(self.username)
 
 		self.join = Button(text="Join")
 		# bind this button for an event to a method
