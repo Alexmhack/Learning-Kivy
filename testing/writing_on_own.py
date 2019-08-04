@@ -1,6 +1,5 @@
 import kivy
 import requests
-import json
 
 from kivy.app import App
 from kivy.uix.label import Label
@@ -13,6 +12,15 @@ class DataInputPage(GridLayout):
 		super().__init__(**kwargs)
 
 		self.cols = 1
+
+
+class DisplayWeatherPage(GridLayout):
+	def __init__(self, **kwargs):
+		super().__init__(**kwargs)
+		self.api_key = 'eb1ed9135fc15fd78e986d8824d4fd69'
+		self.url = "http://api.openweathermap.org/data/2.5/weather?q={},India"
+
+		self.send_url = "&appid=" + self.api_key
 
 
 class TestApp(App):
