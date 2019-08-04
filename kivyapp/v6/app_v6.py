@@ -97,6 +97,13 @@ class InfoPage(GridLayout):
 		self.message.text_size = (self.message.width * 0.9, None)
 
 
+class ChatPage(GridLayout):
+	def __init__(self, **kwargs):
+		super().__init__(**kwargs)
+		self.cols = 1
+		self.add_widget(Label(text="This is working till now"))
+
+
 class EpicApp(App):
 	def build(self):
 		self.screen_manager = ScreenManager()
