@@ -12,18 +12,6 @@ class ConnectPage(GridLayout):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 
-		if os.path.isfile("prev_details.txt"):
-			with open("prev_details.txt", "r") as f:
-				file = f.read().split(",")
-
-			prev_ip = file[0]
-			prev_port = file[1]
-			prev_username = file[2]
-		else:
-			prev_ip = ""
-			prev_port = ""
-			prev_username = ""
-
 		# dividing the window in two cols
 		self.cols = 2
 
@@ -54,9 +42,6 @@ class ConnectPage(GridLayout):
 		username = self.username.text
 
 		print(f"Attempting to join {ip}:{port} as {username}")
-
-		with open('prev_details.txt', 'w') as file:
-			file.write(f"{ip},{port},{username}")
 
 
 class EpicApp(App):
