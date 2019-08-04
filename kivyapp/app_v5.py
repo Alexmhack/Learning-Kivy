@@ -70,6 +70,13 @@ class InfoPage(GridLayout):
 		self.message.bind(width=self.update_text_width)
 		self.add_widget(self.message)
 
+		self.back = Button(text="Go Back")
+		self.back.bind(on_press=self.back_button)
+		self.add_widget(self.back)
+
+	def back_button(self, instance):
+		chat_app.screen_manager.current = "Connect"
+
 	def update_info(self, message):
 		self.message.text = message
 
