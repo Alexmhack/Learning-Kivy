@@ -35,6 +35,9 @@ class ConnectPage(GridLayout):
 		self.add_widget(Label())
 		self.add_widget(self.join)
 
+	def join_button(self, instance):
+		pass
+
 
 class EpicApp(App):
 	def build(self):
