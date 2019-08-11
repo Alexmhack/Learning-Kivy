@@ -1,3 +1,4 @@
+import kivy
 import os
 import sys
 
@@ -10,6 +11,8 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.clock import Clock
+
+kivy.require('1.11.1')
 
 
 class ConnectPage(GridLayout):
