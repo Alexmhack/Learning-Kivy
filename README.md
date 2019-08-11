@@ -188,3 +188,88 @@ event. We will be doing this by using the `.bind` method of `Button` instance.
 by writing them to a file first and then reading from the file on next run of App.
 
 You can find this implementation in the same file.
+
+## Screen Manager & Screen
+For code look at **testing/screen_example.py**
+
+So why do we need **Screens**. Take example of our chat application, we want the user to input
+their details like the username, ip, port when the application starts and then when users
+presses the button(join) we take the user to the screen where we tell him that we are
+connecting the user to the specific socket with whatever username that he wants.
+
+So for navigating across the pages of connect, info and chat page we need various screens
+with the relevant data to be shown to the user, we achieve this using **Screens**.
+
+To create a screen and manager for screen use,
+
+```
+from kivy.uix.screenmanager import ScreenManager, Screen
+...
+...
+class TestApp(App):
+    def build(self):
+        self.screen_manager = ScreenManager()
+
+        self.connect_page = ConnectPage()
+        screen = Screen(name="Connect")
+        screen.add_widget(self.connect_page)
+        self.screen_manager.add_widget(screen)
+
+        self.info_page = InfoPage()
+        screen = Screen(name="Info")
+        screen.add_widget(self.info_page)
+        self.screen_manager.add_widget(screen)
+        return self.screen_manager
+```
+
+`self.connect_page` is the instance of `ConnectPage` class. We also create a object of `Screen`
+class with the `name="Connect"`, the name attribute helps us to refer to this screen using the
+**ScreenManager** object. Similarly we create a instance of **InfoPage** class which is not
+yet defined but you can look in the file for reference. After we add the **GridLayout**
+instances to the screen using `screen.add_widget(self.connect_page)`, since we need to return
+something from the `build` method we return the `screen_manager` itself.
+
+Now we can change the screens using,
+
+```
+    # inside ConnectPage class
+    ....
+    def join_button(self, instance):
+        ip = self.ip.text
+        port = self.port.text
+        username = self.username.text
+
+        with open('data/prev_details.txt', 'w') as file:
+            file.write(f"{ip},{port},{username}")
+
+        info = f"Attempting to join {ip}:{port} as {username}"
+        chat_app.info_page.update_info(info)
+        chat_app.screen_manager.current = "Info"
+```
+
+Make changes accordingly using **testing/screen_example.py** file and run it, after entering
+the input press join button and you will get the info page showing your details.
+
+Here is how `InfoPage` class looks like,
+
+```
+class InfoPage(GridLayout):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.cols = 1
+
+        self.message = Label(halign='center', valign='middle', font_size=30)
+        self.message.bind(width=self.update_message_width)
+        self.add_widget(self.message)
+
+    def update_info(self, message):
+        self.message.text = message
+
+    def update_message_width(self, *_):
+        self.message.text_size = (self.message.width * 0.9, None)
+```
+
+We bind the `width` of the message to a method which will update the `text_size` of the message
+to the 90% of the message width. We also define a method `update_info` which will update the
+*message* of the page to the message passed to it as argument.
+
