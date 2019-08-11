@@ -105,3 +105,4 @@ venv.bak/
 
 # virtualenv
 kivy_env/
+old_env/
