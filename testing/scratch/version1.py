@@ -1,11 +1,15 @@
+import kivy
+
 from kivy.app import App
 from kivy.uix.label import Label
 
+kivy.require('1.11.1')
 
-class TestApp(App):
+
+class EpicApp(App):
     def build(self):
-        return Label(text="This is Test App")
+        return Label(text="Hey There")
 
 
 if __name__ == '__main__':
-    TestApp().run()
+    EpicApp().run()
