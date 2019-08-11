@@ -27,8 +27,15 @@ class ConnectPage(GridLayout):
         self.add_widget(self.username)
 
         self.join = Button(text="Join")
+        self.join.bind(on_press=self.join_button)
         self.add_widget(Label())
         self.add_widget(self.join)
+
+    def join_button(self, instance):
+        port = self.port.text
+        ip = self.ip.text
+        username = self.username.text
+        print(f"Attempting to join {ip}:{port} as {username}")
 
 
 class SampleApp(App):
