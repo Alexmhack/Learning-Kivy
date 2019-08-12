@@ -10,7 +10,7 @@ from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.gridlayout import GridLayout
 
-import socket_client
+from socket_app import socket_client
 
 kivy.require('1.11.1')
 
