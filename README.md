@@ -1,6 +1,8 @@
 # Learning-Kivy
 Learning to develop cross platform applications using the python Kivy library.
 
+**There has been some issues with the kivy when doing a relative import in any of the file and running the file, the kivy window does not seem to work, the application works fine in the command prompt, if anybody knows whats wrong or wanna know more about the problem, open a issue on the repo and answer it please.**
+
 ## Installation
 Follow the instructions on the kivy official [website](https://kivy.org/#download) for your
 operating system and install the latest version of kivy.
@@ -272,4 +274,3 @@ class InfoPage(GridLayout):
 We bind the `width` of the message to a method which will update the `text_size` of the message
 to the 90% of the message width. We also define a method `update_info` which will update the
 *message* of the page to the message passed to it as argument.
-
